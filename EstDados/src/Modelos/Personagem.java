@@ -10,5 +10,4 @@ public class Personagem {
     private int recompensa;
     
     
-    
 }
