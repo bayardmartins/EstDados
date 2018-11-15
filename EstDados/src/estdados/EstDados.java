@@ -1,3 +1,4 @@
+package estdados;
 /*
 Metodos necessários:
 busca simples por criterio
@@ -12,12 +13,15 @@ escolher qual será o caráter de nossos dados (gostei da ideia de personagem de
 o trabalho deve acompanhar uma documentação que explica o porque das nossas decisoes de projeto
 */
 
-package estdados;
+import Controladores.ControladorPrincipal;
 
 public class EstDados {
 
     public static void main(String[] args) {
 
+        
+        ControladorPrincipal ctrlPrincipal = new ControladorPrincipal();
+        
     }
     
 }
