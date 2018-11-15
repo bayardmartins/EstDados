@@ -1,21 +1,23 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+Metodos necessários:
+busca simples por criterio
+busca combinada entre dois critérios
+adiciona dados através de carga de dados
+adiciona dados através de inserção manual
+remoção de dados
+exibir dados
+
+demais coisas a fazer (qm precisa de trello se tem comentários:
+escolher qual será o caráter de nossos dados (gostei da ideia de personagem de one piece, na real)
+o trabalho deve acompanhar uma documentação que explica o porque das nossas decisoes de projeto
+*/
+
 package estdados;
 
-/**
- *
- * @author Bayard
- */
 public class EstDados {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+
     }
     
 }
