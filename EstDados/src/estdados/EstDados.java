@@ -21,7 +21,7 @@ public class EstDados {
 
         
         ControladorPrincipal ctrlPrincipal = new ControladorPrincipal();
-        
+        ctrlPrincipal.inicia();
     }
     
 }

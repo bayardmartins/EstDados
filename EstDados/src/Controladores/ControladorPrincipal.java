@@ -20,6 +20,29 @@ public class ControladorPrincipal {
         telaPrincipal = new TelaPrincipal(this);
         
     }
-    
+
+    public void inicia() {
+        telaPrincipal.exibeMenu();
+    }
+
+    public void opcaoMenu(int opcao) { // leva para os menus secundarios
+        
+        switch(opcao){
+            case 1: System.out.println("Você escolheu: Busca Simples");
+                break;
+            case 2: System.out.println("Você escolheu: Busca Combinada");
+                break;
+            case 3: System.out.println("Você escolheu: Adicionar Personagem Manualmente");
+                break;
+            case 4: System.out.println("Você escolheu: Carregar Dados");
+                break;
+            case 5: System.out.println("Você escolheu: Excluir Personagem");
+                break;
+            case 6: System.out.println("Você escolheu: Exibir Personagens");
+                break;
+            default: System.out.println("erro");
+                break;
+        }
+    }
     
 }
