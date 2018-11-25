@@ -29,16 +29,15 @@ public class TelaPrincipal {
         System.out.println("1. Busca Simples");
         System.out.println("2. Busca Combinada");
         System.out.println("3. Adicionar Personagem Manualmente");
-        System.out.println("4. Carregar Dados");
-        System.out.println("5. Excluir Personagem");
-        System.out.println("6. Exibir Personagens");
+        System.out.println("4. Excluir Personagem");
+        System.out.println("5. Exibir Personagens");
         int opcao = teclado.nextInt();
         if(opcao >= 7){
             do
             {
                 System.out.println("Digite um numero valido");
                 opcao = teclado.nextInt();
-            }while (opcao>=7);
+            }while (opcao>=6);
         }
         ctrlPrincipal.opcaoMenu(opcao);
     }

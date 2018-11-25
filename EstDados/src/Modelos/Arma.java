@@ -1,16 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Modelos;
 
-/**
- *
- * @author Bayard
- */
-public class Arma {
+
+public enum Arma {
+
+    SOCO(1),
+    ESPADA(2),
+    TIRO(3),
+    CHUTE(4),
+    OUTRO(5);
     
-    String nome;
+    public final int id;
+    
+    Arma (int idCargo){
+        id = idCargo;
+    }
     
 }
