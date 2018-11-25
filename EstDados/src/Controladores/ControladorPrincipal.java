@@ -24,6 +24,10 @@ public class ControladorPrincipal {
         telaPrincipal.exibeMenu();
     }
     
+    public void telaBusca(){
+
+    }
+    
     public void opcaoMenu(int opcao) { // leva para os menus secundarios
         
         switch(opcao){

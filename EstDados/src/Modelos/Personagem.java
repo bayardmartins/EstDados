@@ -63,5 +63,9 @@ public class Personagem {
         this.arma = arma;
     }
     
+    public static void addPersonagem() {
+        
+    }
+
                
 }
