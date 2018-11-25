@@ -13,16 +13,19 @@ import Telas.TelaPrincipal;
 public class ControladorPrincipal {
     
     private TelaPrincipal telaPrincipal;
-    private ControladorDados ctrlDados;
+    private ControladorPersonagem ctrlPersonagem;
  
     public ControladorPrincipal(){  
-        ctrlDados = new ControladorDados(this);
+        ctrlPersonagem = new ControladorPersonagem(this);
         telaPrincipal = new TelaPrincipal(this);
-        
     }
 
     public void inicia() {
         telaPrincipal.exibeMenu();
+    }
+    
+    public void telaBusca(){
+
     }
 
     public void opcaoMenu(int opcao) { // leva para os menus secundarios
@@ -34,11 +37,9 @@ public class ControladorPrincipal {
                 break;
             case 3: System.out.println("Você escolheu: Adicionar Personagem Manualmente");
                 break;
-            case 4: System.out.println("Você escolheu: Carregar Dados");
+            case 4: System.out.println("Você escolheu: Excluir Personagem");
                 break;
-            case 5: System.out.println("Você escolheu: Excluir Personagem");
-                break;
-            case 6: System.out.println("Você escolheu: Exibir Personagens");
+            case 5: System.out.println("Você escolheu: Exibir Personagens");
                 break;
             default: System.out.println("erro");
                 break;

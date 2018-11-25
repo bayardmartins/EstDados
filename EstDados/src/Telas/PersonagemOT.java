@@ -3,14 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Modelos;
+package Telas;
 
 /**
  *
  * @author Bayard
  */
-public class Arma {
-    
-    String nome;
+public class PersonagemOT {
     
 }
