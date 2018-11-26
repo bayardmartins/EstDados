@@ -56,4 +56,12 @@ public class DiretorioAkuma {
             return diretorioNaoTemAkuma;
         }
     }
+
+    public void limpaAkuma(int posicao, Personagem personagem) {
+        if(personagem.isAkuma()){
+            diretorioTemAkuma.remove((Object)posicao);
+        }else{
+            diretorioNaoTemAkuma.remove((Object)posicao);
+        }
+    }
 }

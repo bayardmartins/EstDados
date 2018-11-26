@@ -78,4 +78,18 @@ public class DiretorioRecompensa {
         }
         return new ArrayList();      
     }
+
+    public void limpaRecompensa(int posicao, Personagem personagem) {
+        int rec  = personagem.getRecompensa();
+        if (rec < 100000){
+            diretorioAte100mil.remove((Object)posicao);
+        }if(rec >= 100000 && rec < 500000 ){
+            diretorio100a500mil.remove((Object)posicao);
+        }if (rec >= 500000 && rec < 1000000){
+            diretorio500a1mi.remove((Object)posicao);
+        }if (rec >= 1000000){
+            diretorioAcima1mi.remove((Object)posicao);
+        }
+
+    }
 }

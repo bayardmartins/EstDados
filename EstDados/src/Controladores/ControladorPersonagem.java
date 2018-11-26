@@ -19,6 +19,8 @@ public class ControladorPersonagem {
     private DiretorioRecompensa dirRecompensa;
     private TelaBusca telaBusca;
     private TelaPersonagem telaPersonagem;
+    private int inicio=-1;
+    private int fim=-1;
     
     public ControladorPersonagem(ControladorPrincipal ctrlPrincipal) {
         this.ctrlPrincipal = ctrlPrincipal;
@@ -56,26 +58,44 @@ public class ControladorPersonagem {
         boolean temAkuma = (personagem.akuma == 1);
         System.out.println(ponteiroTabela[ppLivre]);
         Personagem novoPersonagem = new Personagem (personagem.nome,temAkuma,personagem.recompensa,defineArma(personagem.arma));
+        if(inicio<0){
+            inicio = 0;
+            fim = 0;
+        }
         listaPersonagem[ppLivre] = novoPersonagem;
         dirAkuma.addPersonagem(ppLivre);
         dirArma.addPersonagem(ppLivre);
         dirRecompensa.addPersonagem(ppLivre);
+        fim = ppLivre;
         ppLivre = ponteiroTabela[ppLivre];
         if(ppLivre == -1){
-            aumentaArray();
+            aumentaArray(); 
         }
         
     }
     
     public void removePersonagem(String nome){
-        System.out.println(nome);
+        System.out.println(fim);
+        System.out.println(findPersonagemByNome("law"));
         int posicao = findPersonagemByNome(nome);
         if(posicao>-2){
+            limparPersonagemDiretorio(posicao);
             listaPersonagem[posicao] = null;
-            ponteiroTabela[findQuemAponta(posicao)]=ponteiroTabela[findQuemAponta(ppLivre)];
-            ponteiroTabela[findQuemAponta(ppLivre)]=posicao;
-            ponteiroTabela[posicao]=ppLivre;
-            ppLivre = posicao;
+            
+            if(posicao==inicio){
+                inicio=ponteiroTabela[inicio];
+                ponteiroTabela[fim]=posicao;
+                ponteiroTabela[posicao]=ppLivre;
+                ppLivre = posicao;
+            }else if(posicao==fim){
+                fim=findQuemAponta(fim);
+                ppLivre=fim;
+            }else{
+                ponteiroTabela[findQuemAponta(posicao)]=ponteiroTabela[ponteiroTabela[posicao]];
+                ponteiroTabela[fim]=posicao;
+                ponteiroTabela[posicao]=ppLivre;
+                ppLivre = posicao;
+            }
         }else{
             System.out.println("Personagem nao encontrado");
         }
@@ -83,25 +103,30 @@ public class ControladorPersonagem {
     }
 
     public int findPersonagemByNome (String nome){
-        for(int i = 0; i < listaPersonagem.length ; i++){
-            if(listaPersonagem[i].getNome().equals(nome)){
+        int i = inicio;
+        do{
+            if(nome.equals(listaPersonagem[i].getNome())){
                 return i;
             }
-        }
+            i=ponteiroTabela[i];
+        }while(listaPersonagem[i]!=null);
         return -2;
     }
     
    
     
     public int findQuemAponta (int posicao){
-        int k = 0;
-        for(int i = 0; i < ponteiroTabela.length ; i++){
-            if(ponteiroTabela[i] == posicao){
-                return k;
+        int i = inicio;
+        do{
+            if(ponteiroTabela[i]==posicao){ 
+                return i;
             }
-            k++;
-        }
+            i=ponteiroTabela[i];
+        }while(i!=fim);
+        
         return -2;
+        
+        
     }
     
     public TelaBusca getTelaBusca() {
@@ -158,6 +183,24 @@ public class ControladorPersonagem {
     
     public void aumentaArray(){
         //metodo que dobra o tamanho da tabela e copia o conteudo
+    }
+
+    private void limparPersonagemDiretorio(int posicao) {
+        Personagem personagem = listaPersonagem[posicao];
+        dirAkuma.limpaAkuma(posicao,personagem);
+        dirArma.limpaArma(posicao,personagem);
+        dirRecompensa.limpaRecompensa(posicao,personagem);
+    }
+
+    public void imprimeLista() {
+        int i = inicio;
+        System.out.println("------------------");
+        do{
+            telaBusca.printPersonagem(listaPersonagem[i]);
+            i=ponteiroTabela[i];
+            System.out.println("  ");
+        }while(i!=fim);
+        System.out.println("------------------");
     }
     
 }

@@ -68,18 +68,20 @@ public class TelaPersonagem {
         System.out.println("Tela de Remover Personagem");
         System.out.println("Digite o nome do Personagem:");
         nome = teclado.nextLine();
-        do{
+        while (ctrlPersonagem.findPersonagemByNome(nome)<-1){
             System.out.println("Digite o nome de um personagem cadastrado");
             nome = teclado.nextLine();
             System.out.println(nome);
-        }while (ctrlPersonagem.findPersonagemByNome(nome)>-2);
+        }
         ctrlPersonagem.removePersonagem(nome);
+        
         ctrlPersonagem.getCtrlPrincipal().getTela().exibeMenu();
     }
 
     public void exibePersonagem() {
         System.out.println("Imprimir Personagem");
-      
+        ctrlPersonagem.imprimeLista();
+        ctrlPersonagem.getCtrlPrincipal().getTela().exibeMenu();
     }
     
 }

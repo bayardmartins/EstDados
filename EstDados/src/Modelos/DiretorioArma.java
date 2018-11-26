@@ -95,5 +95,22 @@ public class DiretorioArma {
         }
         return new ArrayList();
     }
+
+    public void limpaArma(int posicao, Personagem personagem) {
+        switch(personagem.getArma()){
+            case SOCO: diretorioSocos.remove((Object)posicao);
+                break;
+            case ESPADA: diretorioEspadas.remove((Object)posicao);
+                break;
+            case TIRO: diretorioTiros.remove((Object)posicao);
+                break;
+            case CHUTE: diretorioChutes.remove((Object)posicao);
+                break;
+            case OUTRO: diretorioOutros.remove((Object)posicao);
+                break;
+            default: System.out.println("erro");
+                break;
+        }
+    }
 }
     

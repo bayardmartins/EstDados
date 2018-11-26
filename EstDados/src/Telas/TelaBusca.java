@@ -94,5 +94,12 @@ public class TelaBusca {
         }
         this.printLista(combinado);             
     }
+
+    public void printPersonagem(Personagem personagem) {
+        System.out.println("Nome: "+ personagem.getNome());
+        System.out.println("Tem Akuma no mi: "+ personagem.isAkuma());
+        System.out.println("Arma: " + personagem.getArma());
+        System.out.println("Recompenca: " + personagem.getRecompensa());
+    }
     
 }
