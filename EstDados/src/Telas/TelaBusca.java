@@ -86,8 +86,8 @@ public class TelaBusca {
             menorDiretorio = diretorio1;
         }
         
-        for(int position : menorDiretorio) {
-            if (maiorDiretorio.contains(position)) {
+        for(int position : maiorDiretorio) {
+            if (menorDiretorio.contains(position)) {
                 combinado.add(position);
             
             }
