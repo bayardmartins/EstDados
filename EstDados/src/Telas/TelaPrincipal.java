@@ -24,7 +24,6 @@ public class TelaPrincipal {
     }
     
         public void exibeMenu() { // criar um tratamento para teclado next != int
-        System.out.println("Bem vindo");
         System.out.println("Digite o valor referente a operação desejada");
         System.out.println("1. Busca Simples");
         System.out.println("2. Busca Combinada");

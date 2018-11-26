@@ -42,20 +42,6 @@ public class TelaPersonagem {
         }
         System.out.println("Qual o valor da Recompensa?");
         recompensa = teclado.nextInt();
-        System.out.println("Em qual arco o personagem surgiu?");
-        System.out.println("Digite:");
-        System.out.println("1 para East Blue");
-        System.out.println("2 para Alabasta");
-        System.out.println("3 para Skypiea");
-        System.out.println("4 para Water 7");
-        arco = teclado.nextInt();
-        if (arco > 4 && arco < 1){
-            do
-            {
-                System.out.println("Digite um número de 1 a 4");
-                arco = teclado.nextInt();
-            }while (arco > 4 && arco < 1);
-        }
         System.out.println("Qual arma o personagem usa?");
         System.out.println("Digite:");
         System.out.println("1 para Soco");
@@ -64,15 +50,17 @@ public class TelaPersonagem {
         System.out.println("4 para Chute");
         System.out.println("5 para Outros");
         arma = teclado.nextInt();
-        if (arma > 5 && arma < 1){
+        if (arma > 5 || arma < 1){
             do
             {
                 System.out.println("Digite um número de 1 a 5");
                 arma = teclado.nextInt();
-            }while (arma > 5 && arma < 1);
+            }while (arma > 5 || arma < 1);
         }
-        PersonagemOT novoPersonagem = new PersonagemOT(nome, intAkuma, recompensa, arco, arma);
-        ctrlPersonagem addPersonagem(novoPersonagem);
+        PersonagemOT novoPersonagem = new PersonagemOT(nome, intAkuma, recompensa, arma);
+        ctrlPersonagem.addPersonagem(novoPersonagem);
+        System.out.println("Personagem Adicionado");
+        ctrlPersonagem.exibeMenu();
     }
         
     public void removePersonagem() {

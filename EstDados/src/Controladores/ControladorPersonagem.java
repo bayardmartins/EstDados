@@ -1,8 +1,7 @@
 package Controladores;
-import Modelos.Arco;
 import Modelos.Arma;
 import Modelos.DiretorioAkuma;
-import Modelos.DiretorioArco;
+import Modelos.DiretorioArma;
 import Modelos.DiretorioRecompensa;
 import Modelos.Personagem;
 import Telas.PersonagemOT;
@@ -13,8 +12,9 @@ public class ControladorPersonagem {
     
     private ControladorPrincipal ctrlPrincipal; 
     private Personagem[] listaPersonagem = new Personagem[32];
+    private int[] ponteiroTabela = new int[32];
     private DiretorioAkuma dirAkuma;
-    private DiretorioArco dirArco;
+    private DiretorioArma dirArma;
     private DiretorioRecompensa dirRecompensa;
     private TelaBusca telaBusca;
     private TelaPersonagem telaPersonagem;
@@ -24,13 +24,17 @@ public class ControladorPersonagem {
         telaBusca = new TelaBusca(this);
         telaPersonagem = new TelaPersonagem(this);
         DiretorioAkuma dirAkuma = new DiretorioAkuma();
-        DiretorioArco dirArco = new DiretorioArco();
         DiretorioRecompensa dirRecompensa = new DiretorioRecompensa();
+    }
+    
+    public ControladorPrincipal getCtrlPrincipal(){
+        return ctrlPrincipal;
     }
     
     public void addPersonagem(PersonagemOT personagem) {
         boolean temAkuma = (personagem.akuma == 1);
-        Personagem novoPersonagem = new Personagem (personagem.nome,temAkuma,personagem.recompensa,defineArco(personagem.arco),defineArma(personagem.arma));
+        Personagem novoPersonagem = new Personagem (personagem.nome,temAkuma,personagem.recompensa,defineArma(personagem.arma));
+        
     }
 
     public TelaBusca getTelaBusca() {
@@ -48,5 +52,29 @@ public class ControladorPersonagem {
     public void buscaSimples (){
         
     }
-  
+
+    private Arma defineArma(int codArma) { 
+        Arma arma = Arma.SOCO;
+        if(codArma == Arma.CHUTE.id){
+            arma = Arma.CHUTE;
+        }
+        if(codArma == Arma.ESPADA.id){
+            arma = Arma.ESPADA;
+        }
+        if(codArma == Arma.TIRO.id){
+            arma = Arma.TIRO;
+        }
+        if(codArma == Arma.CHUTE.id){
+            arma = Arma.CHUTE;
+        }
+        if(codArma == Arma.OUTRO.id){
+            arma = Arma.OUTRO;
+        }
+        return arma;
+    }
+
+    public void exibeMenu() {
+        getCtrlPrincipal().getTela().exibeMenu();
+    }
+    
 }

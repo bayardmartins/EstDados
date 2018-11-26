@@ -21,7 +21,12 @@ public class ControladorPrincipal {
     }
 
     public void inicia() {
+        System.out.println("Bem vindo");
         telaPrincipal.exibeMenu();
+    }
+    
+    public TelaPrincipal getTela(){
+        return telaPrincipal;
     }
     
     public void opcaoMenu(int opcao) { // leva para os menus secundarios
