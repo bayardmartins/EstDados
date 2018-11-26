@@ -2,6 +2,7 @@ package Modelos;
 
 //Socos","Espada","Tiros","Chute","Outros
 
+import Controladores.ControladorPersonagem;
 import java.util.ArrayList;
 
 public class DiretorioArma {
@@ -11,6 +12,8 @@ public class DiretorioArma {
     private ArrayList diretorioTiros;
     private ArrayList diretorioChutes;
     private ArrayList diretorioOutros;
+    private ControladorPersonagem ctrlPersonagem;
+
     
     public DiretorioArma(){
         diretorioSocos = new ArrayList();
@@ -21,18 +24,18 @@ public class DiretorioArma {
     }
     
     
-    public void addPersonagem(Personagem personagem){
+    public void addPersonagem(int posicaoTabela){
         
-        switch(personagem.getArma()){
-            case SOCO: addSoco(personagem);
+        switch(ctrlPersonagem.getListaPersonagem()[posicaoTabela].getArma()){
+            case SOCO: addSoco(posicaoTabela);
                 break;
-            case ESPADA: addEspada(personagem);
+            case ESPADA: addEspada(posicaoTabela);
                 break;
-            case TIRO: addTiro(personagem);
+            case TIRO: addTiro(posicaoTabela);
                 break;
-            case CHUTE: addChute(personagem);
+            case CHUTE: addChute(posicaoTabela);
                 break;
-            case OUTRO: addOutro(personagem);
+            case OUTRO: addOutro(posicaoTabela);
                 break;
             default: System.out.println("erro");
                 break;
@@ -40,24 +43,24 @@ public class DiretorioArma {
         
     }
 
-    private void addSoco(Personagem personagem) {
-        diretorioSocos.add(personagem.getCod());
+    private void addSoco(int posicaoTabela) {
+        diretorioSocos.add(posicaoTabela);
     }
 
-    private void addEspada(Personagem personagem) {
-        diretorioEspadas.add(personagem.getCod());
+    private void addEspada(int posicaoTabela) {
+        diretorioEspadas.add(posicaoTabela);
     }
 
-    private void addTiro(Personagem personagem) {
-        diretorioTiros.add(personagem.getCod());
+    private void addTiro(int posicaoTabela) {
+        diretorioTiros.add(posicaoTabela);
     }
 
-    private void addChute(Personagem personagem) {
-        diretorioChutes.add(personagem.getCod());
+    private void addChute(int posicaoTabela) {
+        diretorioChutes.add(posicaoTabela);
     }
     
-    private void addOutro(Personagem personagem) {
-        diretorioOutros.add(personagem.getCod());
+    private void addOutro(int posicaoTabela) {
+        diretorioOutros.add(posicaoTabela);
     }
 
 }

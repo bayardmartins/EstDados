@@ -2,25 +2,18 @@ package Modelos;
 
 public class Personagem {
     
-    private int cod; 
     private String nome;
     private boolean akuma;
     private int recompensa;
     private Arco arco;
     private Arma arma;
     
-    public Personagem (int cod, String nome, boolean temAkuma, int recompensa, Arco arco, Arma arma){
-        this.cod = cod; 
+    public Personagem (String nome, boolean temAkuma, int recompensa, Arco arco, Arma arma){
         this.nome = nome;
         this.akuma = temAkuma;
         this.recompensa = recompensa;
         this.arco = arco;
         this.arma = arma;
-    }
-    
-
-    public int getCod() {
-        return cod;
     }
 
     public String getNome() {

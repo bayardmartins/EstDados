@@ -24,10 +24,6 @@ public class ControladorPrincipal {
         telaPrincipal.exibeMenu();
     }
     
-    public void telaBusca(){
-
-    }
-    
     public void opcaoMenu(int opcao) { // leva para os menus secundarios
         
         switch(opcao){
@@ -37,7 +33,7 @@ public class ControladorPrincipal {
             case 2: System.out.println("Você escolheu: Busca Combinada");
                 ctrlPersonagem.getTelaBusca().buscaCombinada();
                 break;
-            case 3: System.out.println("Você escolheu: Adicionar Personagem Manualmente");
+            case 3: System.out.println("Você escolheu: Adicionar Personagem");
                 ctrlPersonagem.getTelaPersonagem().addPersonagem();
                 break;
             case 4: System.out.println("Você escolheu: Excluir Personagem");

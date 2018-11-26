@@ -3,9 +3,9 @@ import Modelos.Arco;
 import Modelos.Arma;
 import Modelos.DiretorioAkuma;
 import Modelos.DiretorioArco;
-import Modelos.DiretorioNome;
 import Modelos.DiretorioRecompensa;
 import Modelos.Personagem;
+import Telas.PersonagemOT;
 import Telas.TelaBusca;
 import Telas.TelaPersonagem;
 
@@ -15,7 +15,6 @@ public class ControladorPersonagem {
     private Personagem[] listaPersonagem = new Personagem[32];
     private DiretorioAkuma dirAkuma;
     private DiretorioArco dirArco;
-    private DiretorioNome dirNome;
     private DiretorioRecompensa dirRecompensa;
     private TelaBusca telaBusca;
     private TelaPersonagem telaPersonagem;
@@ -24,10 +23,14 @@ public class ControladorPersonagem {
         this.ctrlPrincipal = ctrlPrincipal;
         telaBusca = new TelaBusca(this);
         telaPersonagem = new TelaPersonagem(this);
+        DiretorioAkuma dirAkuma = new DiretorioAkuma();
+        DiretorioArco dirArco = new DiretorioArco();
+        DiretorioRecompensa dirRecompensa = new DiretorioRecompensa();
     }
     
-    public static void addPersonagem(int cod, String nome, boolean temAkuma, int recompensa, Arco arco, Arma arma) {
-        Personagem novoPersonagem = new Personagem (cod,nome,temAkuma,recompensa,arco,arma);
+    public void addPersonagem(PersonagemOT personagem) {
+        boolean temAkuma = (personagem.akuma == 1);
+        Personagem novoPersonagem = new Personagem (personagem.nome,temAkuma,personagem.recompensa,defineArco(personagem.arco),defineArma(personagem.arma));
     }
 
     public TelaBusca getTelaBusca() {
@@ -37,7 +40,11 @@ public class ControladorPersonagem {
     public TelaPersonagem getTelaPersonagem() {
         return telaPersonagem;
     }
-
+    
+    public Personagem[] getListaPersonagem () {
+        return listaPersonagem;
+    }
+    
     public void buscaSimples (){
         
     }

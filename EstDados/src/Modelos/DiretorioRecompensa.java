@@ -1,5 +1,6 @@
 package Modelos;
 
+import Controladores.ControladorPersonagem;
 import java.util.ArrayList;
 
 public class DiretorioRecompensa {
@@ -8,6 +9,7 @@ public class DiretorioRecompensa {
     private ArrayList diretorio100a500mil;
     private ArrayList diretorio500a1mi;
     private ArrayList diretorioAcima1mi;
+    private ControladorPersonagem ctrlPersonagem;
     
     public DiretorioRecompensa(){
         diretorioAte100mil = new ArrayList();
@@ -16,32 +18,32 @@ public class DiretorioRecompensa {
         diretorioAcima1mi = new ArrayList();
     }
     
-    public void addPersonagem(Personagem personagem){
-        int rec  = personagem.getRecompensa();
+    public void addPersonagem(int posicaoTabela){
+        int rec  = ctrlPersonagem.getListaPersonagem()[posicaoTabela].getRecompensa();
         if (rec < 100000){
-            addDirAte100mil(personagem);
+            addDirAte100mil(posicaoTabela);
         }if(rec >= 100000 && rec < 500000 ){
-            addDir100a500(personagem);
+            addDir100a500(posicaoTabela);
         }if (rec >= 500000 && rec < 1000000){
-            addDir500a1mi(personagem);
+            addDir500a1mi(posicaoTabela);
         }if (rec >= 1000000){
-            addDir500a1mi(personagem);
+            addDir500a1mi(posicaoTabela);
         }
     }
 
-    private void addDirAte100mil(Personagem personagem) {
-        diretorioAte100mil.add(personagem.getCod());
+    private void addDirAte100mil(int posicaoTabela) {
+        diretorioAte100mil.add(posicaoTabela);
     }
 
-    private void addDir100a500(Personagem personagem) {
-        diretorio100a500mil.add(personagem.getCod());
+    private void addDir100a500(int posicaoTabela) {
+        diretorio100a500mil.add(posicaoTabela);
     }
     
-    private void addDir500a1mi(Personagem personagem) {
-        diretorio500a1mi.add(personagem.getCod());
+    private void addDir500a1mi(int posicaoTabela) {
+        diretorio500a1mi.add(posicaoTabela);
     }
 
-    private void addDirAcima1mi(Personagem personagem) {
-        diretorioAcima1mi.add(personagem.getCod());
+    private void addDirAcima1mi(int posicaoTabela) {
+        diretorioAcima1mi.add(posicaoTabela);
     }
 }

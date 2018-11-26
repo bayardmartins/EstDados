@@ -1,6 +1,7 @@
 
 package Modelos;
 
+import Controladores.ControladorPersonagem;
 import java.util.ArrayList;
 
 
@@ -8,25 +9,27 @@ public class DiretorioAkuma {
     
     private ArrayList diretorioTemAkuma;
     private ArrayList diretorioNaoTemAkuma;
+    private ControladorPersonagem ctrlPersonagem;
     
     public DiretorioAkuma(){
         diretorioTemAkuma = new ArrayList();
         diretorioNaoTemAkuma = new ArrayList();
     }
     
-    public void addPersonagem(Personagem personagem){
-        if (personagem.isAkuma()){
-            addDirTemAkuma(personagem);
+    public void addPersonagem(int posicaoTabela){
+        Personagem perso = ctrlPersonagem.getListaPersonagem()[posicaoTabela];
+        if (perso.isAkuma()){
+            addDirTemAkuma(posicaoTabela);
         }else{
-            addDirNaoTemAkuma(personagem);
+            addDirNaoTemAkuma(posicaoTabela);
         }
     }
 
-    private void addDirTemAkuma(Personagem personagem) {
-        diretorioTemAkuma.add(personagem.getCod());
+    private void addDirTemAkuma(int posicaoTabela) {
+        diretorioTemAkuma.add(posicaoTabela);
     }
 
-    private void addDirNaoTemAkuma(Personagem personagem) {
-        diretorioNaoTemAkuma.add(personagem.getCod());
+    private void addDirNaoTemAkuma(int posicaoTabela) {
+        diretorioNaoTemAkuma.add(posicaoTabela);
     }
 }

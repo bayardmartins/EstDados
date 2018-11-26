@@ -1,6 +1,7 @@
 
 package Modelos;
 
+import Controladores.ControladorPersonagem;
 import java.util.ArrayList;
 
 public class DiretorioArco {
@@ -9,6 +10,7 @@ public class DiretorioArco {
     private ArrayList diretorioAlabasta;
     private ArrayList diretorioSkypiea;
     private ArrayList diretorioWater;
+    private ControladorPersonagem ctrlPersonagem;
     
     public DiretorioArco(){
         diretorioEast = new ArrayList();
@@ -17,16 +19,16 @@ public class DiretorioArco {
         diretorioWater  = new ArrayList();
     }
     
-    public void addPersonagem(Personagem personagem){
+    public void addPersonagem(int posicaoTabela){
         
-        switch(personagem.getArco()){
-            case EAST_BLUE: addEast(personagem);
+        switch(ctrlPersonagem.getListaPersonagem()[posicaoTabela].getArco()){
+            case EAST_BLUE: addEast(posicaoTabela);
                 break;
-            case ALABASTA: addAlabasta(personagem);
+            case ALABASTA: addAlabasta(posicaoTabela);
                 break;
-            case SKYPIEA: addSkypeia(personagem);
+            case SKYPIEA: addSkypeia(posicaoTabela);
                 break;
-            case WATER_7: addWater(personagem);
+            case WATER_7: addWater(posicaoTabela);
                 break;
             default: System.out.println("erro");
                 break;
@@ -34,19 +36,19 @@ public class DiretorioArco {
         
     }
 
-    private void addEast(Personagem personagem) {
-        diretorioEast.add(personagem.getCod());
+    private void addEast(int posicaoTabela) {
+        diretorioEast.add(posicaoTabela);
     }
 
-    private void addAlabasta(Personagem personagem) {
-        diretorioAlabasta.add(personagem.getCod());
+    private void addAlabasta(int posicaoTabela) {
+        diretorioAlabasta.add(posicaoTabela);
     }
 
-    private void addSkypeia(Personagem personagem) {
-        diretorioSkypiea.add(personagem.getCod());
+    private void addSkypeia(int posicaoTabela) {
+        diretorioSkypiea.add(posicaoTabela);
     }
 
-    private void addWater(Personagem personagem) {
-        diretorioWater.add(personagem.getCod());
+    private void addWater(int posicaoTabela) {
+        diretorioWater.add(posicaoTabela);
     }
 }
