@@ -68,7 +68,7 @@ public class TelaPersonagem {
     }
 
     public void exibePersonagem() {
-        System.out.println("Tela de Exibir Lista de Personagem");
+        System.out.println("Imprimir Personagem");
     }
     
 }

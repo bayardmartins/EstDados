@@ -23,8 +23,9 @@ public class ControladorPersonagem {
         this.ctrlPrincipal = ctrlPrincipal;
         telaBusca = new TelaBusca(this);
         telaPersonagem = new TelaPersonagem(this);
-        DiretorioAkuma dirAkuma = new DiretorioAkuma();
-        DiretorioRecompensa dirRecompensa = new DiretorioRecompensa();
+        dirAkuma = new DiretorioAkuma(this);
+        dirArma = new DiretorioArma(this);
+        dirRecompensa = new DiretorioRecompensa(this);
     }
     
     public ControladorPrincipal getCtrlPrincipal(){
@@ -34,7 +35,7 @@ public class ControladorPersonagem {
     public void addPersonagem(PersonagemOT personagem) {
         boolean temAkuma = (personagem.akuma == 1);
         Personagem novoPersonagem = new Personagem (personagem.nome,temAkuma,personagem.recompensa,defineArma(personagem.arma));
-        
+     
     }
 
     public TelaBusca getTelaBusca() {
@@ -47,6 +48,18 @@ public class ControladorPersonagem {
     
     public Personagem[] getListaPersonagem () {
         return listaPersonagem;
+    }
+    
+    public DiretorioAkuma getDiretorioAkuma() {
+        return dirAkuma;
+    }
+    
+    public DiretorioArma getDiretorioArma() {
+        return dirArma;
+    }
+    
+    public DiretorioRecompensa getDiretorioRecompensa() {
+        return dirRecompensa;
     }
     
     public void buscaSimples (){

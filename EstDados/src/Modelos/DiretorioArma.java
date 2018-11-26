@@ -4,6 +4,7 @@ package Modelos;
 
 import Controladores.ControladorPersonagem;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class DiretorioArma {
     
@@ -13,9 +14,11 @@ public class DiretorioArma {
     private ArrayList diretorioChutes;
     private ArrayList diretorioOutros;
     private ControladorPersonagem ctrlPersonagem;
+    Scanner teclado = new Scanner(System.in);
 
     
-    public DiretorioArma(){
+    public DiretorioArma(ControladorPersonagem ctrlPersonagem){
+        this.ctrlPersonagem = ctrlPersonagem;
         diretorioSocos = new ArrayList();
         diretorioEspadas = new ArrayList();
         diretorioTiros = new ArrayList();
@@ -62,6 +65,35 @@ public class DiretorioArma {
     private void addOutro(int posicaoTabela) {
         diretorioOutros.add(posicaoTabela);
     }
-
+    
+     public ArrayList<Integer> retornaDiretorio() {
+        System.out.println("Escolha uma opcao");
+        System.out.println("1: Soco");
+        System.out.println("2: Espada");
+         System.out.println("3: Tiro");
+          System.out.println("4: Chute");
+           System.out.println("5: Outro");
+        int opcao = teclado.nextInt();
+        if(opcao >= 6|| opcao <= 0){
+            do
+            {
+                System.out.println("Digite um numero valido");
+                opcao = teclado.nextInt();
+            }while (opcao>=6 || opcao <= 0);
+        }
+        switch(opcao){
+            case 1:
+                return diretorioSocos;
+            case 2:
+                return diretorioEspadas;
+            case 3:
+                return diretorioTiros;
+            case 4:
+                return diretorioChutes;
+            case 5: 
+                return diretorioOutros;
+        }
+        return new ArrayList();
+    }
 }
     
