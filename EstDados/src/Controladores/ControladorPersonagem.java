@@ -27,10 +27,25 @@ public class ControladorPersonagem {
         dirAkuma = new DiretorioAkuma(this);
         dirArma = new DiretorioArma(this);
         dirRecompensa = new DiretorioRecompensa(this);
-        for(int i = 0; i == ponteiroTabela.length; i++){
+        for(int i = 0; i < ponteiroTabela.length; i++){
             ponteiroTabela[i]=i+1;
+            System.out.println(ponteiroTabela[i]);
         }
         ponteiroTabela[31]=-1;
+        PersonagemOT sanji = new PersonagemOT("sanji",2,70000,4);
+        this.addPersonagem(sanji);
+        PersonagemOT zoro = new PersonagemOT("zoro",2,160000,2);
+        this.addPersonagem(zoro);
+        PersonagemOT luffy = new PersonagemOT("luffy",1,160000,1);
+        this.addPersonagem(luffy);
+        PersonagemOT robin = new PersonagemOT("robin",1,90000,5);
+        this.addPersonagem(robin);
+        PersonagemOT hatchan = new PersonagemOT("hatchan",2,0,2);
+        this.addPersonagem(hatchan);
+        PersonagemOT ace = new PersonagemOT("ace",1,550000,1);
+        this.addPersonagem(ace);
+        PersonagemOT law = new PersonagemOT("law",1,200000,2);
+        this.addPersonagem(law);
     }
     
     public ControladorPrincipal getCtrlPrincipal(){
@@ -39,15 +54,21 @@ public class ControladorPersonagem {
     
     public void addPersonagem(PersonagemOT personagem) {
         boolean temAkuma = (personagem.akuma == 1);
+        System.out.println(ponteiroTabela[ppLivre]);
         Personagem novoPersonagem = new Personagem (personagem.nome,temAkuma,personagem.recompensa,defineArma(personagem.arma));
         listaPersonagem[ppLivre] = novoPersonagem;
+        dirAkuma.addPersonagem(ppLivre);
+        dirArma.addPersonagem(ppLivre);
+        dirRecompensa.addPersonagem(ppLivre);
         ppLivre = ponteiroTabela[ppLivre];
         if(ppLivre == -1){
             aumentaArray();
         }
+        
     }
     
     public void removePersonagem(String nome){
+        System.out.println(nome);
         int posicao = findPersonagemByNome(nome);
         if(posicao>-2){
             listaPersonagem[posicao] = null;
@@ -62,7 +83,7 @@ public class ControladorPersonagem {
     }
 
     public int findPersonagemByNome (String nome){
-        for(int i = 0; i == listaPersonagem.length ; i++){
+        for(int i = 0; i < listaPersonagem.length ; i++){
             if(listaPersonagem[i].getNome().equals(nome)){
                 return i;
             }
@@ -70,9 +91,11 @@ public class ControladorPersonagem {
         return -2;
     }
     
+   
+    
     public int findQuemAponta (int posicao){
         int k = 0;
-        for(int i = 0; i == ponteiroTabela.length ; i++){
+        for(int i = 0; i < ponteiroTabela.length ; i++){
             if(ponteiroTabela[i] == posicao){
                 return k;
             }
