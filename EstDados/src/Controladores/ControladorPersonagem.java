@@ -88,8 +88,8 @@ public class ControladorPersonagem {
                 ponteiroTabela[posicao]=ppLivre;
                 ppLivre = posicao;
             }else if(posicao==fim){
-                fim=findQuemAponta(fim);
                 ppLivre=fim;
+                fim=findQuemAponta(fim);
             }else{
                 ponteiroTabela[findQuemAponta(posicao)]=ponteiroTabela[ponteiroTabela[posicao]];
                 ponteiroTabela[fim]=posicao;
@@ -122,7 +122,7 @@ public class ControladorPersonagem {
                 return i;
             }
             i=ponteiroTabela[i];
-        }while(i!=fim);
+        }while(listaPersonagem[i]!=null);
         
         return -2;
         
@@ -199,7 +199,7 @@ public class ControladorPersonagem {
             telaBusca.printPersonagem(listaPersonagem[i]);
             i=ponteiroTabela[i];
             System.out.println("  ");
-        }while(i!=fim);
+        }while(listaPersonagem[i]!=null);
         System.out.println("------------------");
     }
     
